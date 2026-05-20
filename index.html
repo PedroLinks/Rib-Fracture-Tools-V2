@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rib Fracture Clinical Tools</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#07090f;--s1:#0d1117;--s2:#111827;
+  --border:#1e2d45;--text:#e2e8f0;--muted:#64748b;--subtle:#94a3b8;
+  --acc:#38bdf8;
+}
+body{
+  font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:32px 16px;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 500px 400px at 20% 20%,#0ea5e90a,transparent),
+    radial-gradient(ellipse 400px 500px at 80% 80%,#38bdf808,transparent);
+  pointer-events:none;
+}
+.container{max-width:680px;width:100%;position:relative;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  color:var(--acc);letter-spacing:0.2em;text-transform:uppercase;
+  margin-bottom:10px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+h1{font-size:clamp(28px,6vw,44px);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:8px;}
+h1 em{font-style:normal;color:var(--acc);}
+.sub{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:480px;}
+
+.step-row{display:flex;align-items:stretch;gap:14px;margin-bottom:14px;}
+.step-arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:22px;flex-shrink:0;padding-top:20px;
+}
+.tool-card{
+  flex:1;background:var(--s1);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;
+  transition:all 0.2s;display:block;
+}
+.tool-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 8px 32px #38bdf812;}
+.tool-card-top{padding:18px 20px 14px;border-bottom:1px solid var(--border);}
+.step-badge{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;
+  border-radius:4px;display:inline-block;margin-bottom:10px;
+}
+.tool-title{font-size:18px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;}
+.tool-sub{font-size:11.5px;color:var(--muted);line-height:1.5;}
+.tool-card-body{padding:14px 20px;}
+.feature{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:var(--subtle);margin-bottom:7px;line-height:1.4;
+}
+.feature:last-child{margin-bottom:0;}
+.feature-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.tool-card-foot{
+  padding:12px 20px;border-top:1px solid var(--border);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.workflow-note{
+  background:var(--s1);border:1px solid var(--border);border-radius:12px;
+  padding:14px 18px;margin-top:4px;
+  font-size:12px;color:var(--muted);line-height:1.7;
+}
+.workflow-note strong{color:var(--subtle);}
+
+.footer{
+  margin-top:24px;text-align:center;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);
+  letter-spacing:0.08em;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="eyebrow">Trauma Decision Support Suite</div>
+  <h1>Rib Fracture<br><em>Clinical Tools</em></h1>
+  <p class="sub">A two-stage decision framework. Run Step 1 to quantify overall mortality risk, then Step 2 to determine operative indication. Use together for complete clinical picture.</p>
+
+  <div class="step-row">
+    <!-- STEP 1 -->
+    <a class="tool-card" href="rib-mortality-calculator.html">
+      <div class="tool-card-top">
+        <div class="step-badge" style="background:#f9731620;color:#f97316;border:1px solid #f9731640;">Step 1</div>
+        <div class="tool-title">Mortality Calculator</div>
+        <div class="tool-sub">How sick is this patient? Quantify perioperative risk before operative decision.</div>
+      </div>
+      <div class="tool-card-body">
+        <div class="feature"><div class="feature-dot" style="background:#38bdf8;"></div>Age, fracture count, bilateral/flail pattern</div>
+        <div class="feature"><div class="feature-dot" style="background:#a78bfa;"></div>Injury Severity Score (ISS) — 1 to 75</div>
+        <div class="feature"><div class="feature-dot" style="background:#f472b6;"></div>Presenting vitals — SBP, RR, GCS, SpO₂</div>
+        <div class="feature"><div class="feature-dot" style="background:#fb923c;"></div>Comorbidities — COPD, CHF, cirrhosis, dialysis + more</div>
+        <div class="feature"><div class="feature-dot" style="background:#34d399;"></div>Clinical Frailty Scale (Rockwood CFS 1–9)</div>
+      </div>
+      <div class="tool-card-foot" style="color:#f97316;">
+        <span>Flagel · Battle · RibScore · RFF Index</span>
+        <span>→</span>
+      </div>
+    </a>
+
+    <div class="step-arrow">→</div>
+
+    <!-- STEP 2 -->
+    <a class="tool-card" href="ssrf-calculator-v4.html">
+      <div class="tool-card-top">
+        <div class="step-badge" style="background:#3b82f620;color:#60a5fa;border:1px solid #3b82f640;">Step 2</div>
+        <div class="tool-title">SSRF Decision Aid</div>
+        <div class="tool-sub">Should this patient get rib plating? Multi-guideline operative indication assessment.</div>
+      </div>
+      <div class="tool-card-body">
+        <div class="feature"><div class="feature-dot" style="background:#ef4444;"></div>Absolute &amp; relative contraindications</div>
+        <div class="feature"><div class="feature-dot" style="background:#10b981;"></div>Chest wall instability + RibScore calculator</div>
+        <div class="feature"><div class="feature-dot" style="background:#3b82f6;"></div>IS predicted value calculator (Knudson)</div>
+        <div class="feature"><div class="feature-dot" style="background:#0ea5e9;"></div>Failure-to-wean criteria (ventilated pathway)</div>
+        <div class="feature"><div class="feature-dot" style="background:#f59e0b;"></div>Timing assessment with morbidity data</div>
+      </div>
+      <div class="tool-card-foot" style="color:#60a5fa;">
+        <span>CWIS 2025 · EAST 2017 · WSES 2024 · Denver Health</span>
+        <span>→</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="workflow-note">
+    <strong>How to use together:</strong> A high Step 1 mortality score does not contraindicate SSRF — it contextualizes the risk. Use Step 1 output to anchor the goals-of-care discussion, then Step 2 to determine operative indication. High risk + SSRF indicated = operate with documented informed consent. Critical risk + relative contraindications = individualized multidisciplinary decision.
+  </div>
+
+  <div class="footer">
+    v4.0 · SSRF Decision Aid · Rib Fracture Mortality Calculator · Pending prospective validation
+  </div>
+</div>
+</body>
+</html>
